@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+
+namespace Game
 {
-    private void Start()
+    public class GameManager : MonoBehaviour
     {
-        Debug.Log(nameof(GameManager));
+        private void Start()
+        {
+            Debug.Log(nameof(GameManager));
+        }
     }
 }
+
