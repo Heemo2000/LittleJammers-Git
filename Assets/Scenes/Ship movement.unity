@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 98010439}
   - component: {fileID: 98010440}
+  - component: {fileID: 98010441}
   m_Layer: 0
-  m_Name: Wind diraction
+  m_Name: Wind indiraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +208,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &98010441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98010438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7056569bcc0d4b90af7eeb691a5053d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &972672444
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,16 +318,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb54a0ef6efe4b9eaaf7af061cd1693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doUseWind: 0
-  sailTurnSpeed: 0
-  turnSpeed: 0
-  rudderTurnSpeed: 0
-  speed: 0
-  ship: {fileID: 0}
-  windIndicator: {fileID: 0}
-  sail: {fileID: 0}
-  rudder: {fileID: 0}
   isAnchored: 0
+  _sailTurnSpeed: 0
+  _turnSpeed: 0
+  _rudderTurnSpeed: 0
+  _maxSpeed: 0
+  _sail: {fileID: 0}
+  _rudder: {fileID: 0}
+  _windIndicator: {fileID: 0}
 --- !u!1 &1265922882
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,16 +440,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb54a0ef6efe4b9eaaf7af061cd1693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doUseWind: 0
-  sailTurnSpeed: 0.5
-  turnSpeed: 2
-  rudderTurnSpeed: 1
-  speed: 1.75
-  ship: {fileID: 1478277335}
-  windIndicator: {fileID: 98010438}
-  sail: {fileID: 1478277335}
-  rudder: {fileID: 1265922882}
   isAnchored: 1
+  _sailTurnSpeed: 1
+  _turnSpeed: 1
+  _rudderTurnSpeed: 1
+  _maxSpeed: 2
+  _sail: {fileID: 1725078032}
+  _rudder: {fileID: 1265922882}
+  _windIndicator: {fileID: 98010438}
 --- !u!212 &1478277337
 SpriteRenderer:
   m_ObjectHideFlags: 0

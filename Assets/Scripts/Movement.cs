@@ -5,85 +5,90 @@ using UnityEngine;
 namespace Game
 {
     public class Movement : MonoBehaviour
-    {
-        public bool doUseWind;
-        public float sailTurnSpeed;
-        public float turnSpeed;
-        public float rudderTurnSpeed;
-        public float speed;
-        public GameObject ship;
-        public GameObject windIndicator;
-        public GameObject sail;
-        public GameObject rudder;
+    {       
         public bool isAnchored;
+
+        [SerializeField]
+        private float _sailTurnSpeed;
+
+        [SerializeField]
+        private float _turnSpeed;
+
+        [SerializeField]
+        private float _rudderTurnSpeed;
+
+        [SerializeField]
+        private float _maxSpeed;
+
+        [SerializeField]
+        private GameObject _sail;
+
+        [SerializeField]
+        private GameObject _rudder;
+
+        [SerializeField]
+        private GameObject _windIndicator;
         
-    
-        private float windDirection;
-        private bool isWindChangeSet;
-    	private float windTimer;
-    	private float windDownTime;
-        private float windChange;
-        private float localWind;
-        private float sailPos;
-        private float rudderTurn;
-        private float windModifier;
+
+        private float _windDirection;
+        private float _sailPos;
+        private float _rudderTurn;
+        private float _windModifier;
+        private float _realTurnSpeed;
     
         void Update()
         {
-        
-            //Do wind Thingis.
-        	if(!isWindChangeSet)
-    		{
-    			SetWindChange();
-    		}
-    		else
-    		{
-    			ChangeWind();
-    		} 
-    
-            //turns wind indicator arrow
-            windIndicator.transform.rotation = Quaternion.Euler(0, 0, windDirection);   
+            _realTurnSpeed = _turnSpeed;
+            //went a bit overboard with keeping things private, but this was faster anyway.
+            _windDirection = _windIndicator.transform.rotation.z;
+
     
             //let you turn tha sail
-            sailPos += Input.GetAxis("Vertical") * sailTurnSpeed;
-            sailPos = Mathf.Clamp(sailPos, -90f, 90f);
-            sail.transform.localRotation = Quaternion.Euler(0, 0, sailPos); 
+            _sailPos += Input.GetAxis("Vertical") * _sailTurnSpeed;
+            _sailPos = Mathf.Clamp(_sailPos, -90f, 90f);
+            _sail.transform.localRotation = Quaternion.Euler(0, 0, _sailPos); 
     
             //calculates wind relative to the sail.
-            if (doUseWind)
-            {   
-                Quaternion shipRotation = transform.rotation;
-                float windToShip = Quaternion.Angle(Quaternion.Euler(0, 0, windDirection), shipRotation);
-                Quaternion sailRotation = sail.transform.rotation;
-                windModifier = Quaternion.Angle(Quaternion.Euler(0, 0, windDirection), sailRotation);
-                if (windModifier < -180)
-                {
-                    windModifier += 360;
-                }
-                if (windModifier > 180)
-                {
-                    windModifier -= 360;
-                }
-                //If in upwind, this would put the anchor down. No way out though. But it could be useful for some mechanic later on, to slightly punish going upwind.
-                
-                //if (Mathf.Abs(windToShip) > 175)
-                // {
-                //     isAnchored = true;
-                // }
-                windModifier = Mathf.Clamp01(Mathf.Abs(windModifier) / 90f);
-            }
-            else
+            Quaternion shipRotation = transform.rotation;
+            Quaternion sailRotation = _sail.transform.rotation;
+            float windToSail = Quaternion.Angle(Quaternion.Euler(0, 0, _windDirection + 90f), sailRotation);
+            windToSail = Mathf.Repeat(windToSail + 180f, 360f) - 180f;
+            if (_sailPos < 0)
             {
-                windModifier = 1;
+                windToSail -= 180f;
+                windToSail = Mathf.Abs(windToSail);
             }
+
+            //HeadWind
+            if (windToSail >= 150f)
+            {
+                _windModifier = 0.2f;
+                _realTurnSpead *= 0.5f;
+            }
+            // 1/4 wind
+            else if (windToSail >= 120)
+            {
+                _windModifier = 0.5f;
+            }
+            //FullWind
+            else if (windToSail >= -30)
+            {
+                _windModifier = 1f;
+            }
+            else 
+            {
+                _windModifier = 0.75f;
+            }
+
+
     
             //calculations for moving the ship
             float rudderInput = Input.GetAxis("Horizontal");
-            rudderTurn += rudderInput * rudderTurnSpeed;
-            rudderTurn = Mathf.Clamp(rudderTurn, -35, 35);
-            float turnAmount = rudderTurn * turnSpeed * Time.deltaTime;
-            rudder.transform.localRotation = Quaternion.Euler(0, 0, rudderTurn);
-            float speedWithWind = speed * windModifier;
+            _rudderTurn += rudderInput * _rudderTurnSpeed;
+            _rudderTurn = Mathf.Clamp(_rudderTurn, -35, 35);
+            float turnAmount = _rudderTurn * _realTurnSpeed * Time.deltaTime;
+            _rudder.transform.localRotation = Quaternion.Euler(0, 0, _rudderTurn);
+            float speedWithWind = _maxSpeed * _windModifier;
     
             //actualy moves the ship
             if (!isAnchored)
@@ -95,45 +100,5 @@ namespace Game
     
             
         }
-    
-        //Randomize where the wind will move
-        void SetWindChange ()
-    	{
-    		if (windDownTime <= 0)
-    		{
-            //NUMBERS ARE FOR DEBUGING!!! CHANGE LATER!!!
-    		windTimer = Random.Range(15f, 45f);
-    		windChange = Random.Range(-0.003f, 0.003f);
-    		isWindChangeSet = true;
-    		}
-    		else
-    		{
-    			windDownTime -= Time.deltaTime;
-    		}
-    	}
-    
-        //aply the wind changes
-        void ChangeWind ()
-    	{
-    		windDirection += windChange;
-    		windTimer -= Time.deltaTime;
-    
-        	if (windDirection > 180)
-            {
-                windDirection -= 360;
-            }
-    
-            if (windDirection < -180)
-            {
-                windDirection += 360;
-            }
-    
-    		if (windTimer <= 0)
-    		{
-    			windDownTime = Random.Range(30f, 120f);
-    			isWindChangeSet = false;	
-    		}
-    	}
     }
-
 }
