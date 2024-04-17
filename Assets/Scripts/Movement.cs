@@ -63,7 +63,7 @@ namespace Game
             if (windToSail >= 150f)
             {
                 _windModifier = 0.2f;
-                _realTurnSpead *= 0.5f;
+                _realTurnSpeed *= 0.5f;
             }
             // 1/4 wind
             else if (windToSail >= 120)
