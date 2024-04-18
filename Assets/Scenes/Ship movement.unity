@@ -313,13 +313,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972672444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cb54a0ef6efe4b9eaaf7af061cd1693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isAnchored: 0
-  _sailTurnSpeed: 0
+  sailTurnSpeed: 0
   _turnSpeed: 0
   _rudderTurnSpeed: 0
   _maxSpeed: 0
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478277338}
   - component: {fileID: 1478277337}
-  - component: {fileID: 1478277336}
+  - component: {fileID: 1478277339}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -428,26 +428,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1478277336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478277335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cb54a0ef6efe4b9eaaf7af061cd1693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAnchored: 1
-  _sailTurnSpeed: 1
-  _turnSpeed: 1
-  _rudderTurnSpeed: 1
-  _maxSpeed: 2
-  _sail: {fileID: 1725078032}
-  _rudder: {fileID: 1265922882}
-  _windIndicator: {fileID: 98010438}
 --- !u!212 &1478277337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -517,6 +497,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.8}
+--- !u!114 &1478277339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478277335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3d18d8ecc4eee45be33b8732e62c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAnchored: 0
+  sailTurnSpeed: 0
+  _turnSpeed: 1
+  _rudderTurnSpeed: 1
+  _maxSpeed: 2
+  _sail: {fileID: 1725078032}
+  _rudder: {fileID: 1265922882}
+  _windIndicator: {fileID: 98010438}
 --- !u!1 &1637068494
 GameObject:
   m_ObjectHideFlags: 0

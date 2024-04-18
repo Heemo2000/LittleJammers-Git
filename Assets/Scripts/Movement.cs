@@ -9,7 +9,7 @@ namespace Game
         public bool isAnchored;
 
         [SerializeField]
-        private float _sailTurnSpeed;
+        protected float sailTurnSpeed;
 
         [SerializeField]
         private float _turnSpeed;
@@ -35,16 +35,16 @@ namespace Game
         private float _rudderTurn;
         private float _windModifier;
         private float _realTurnSpeed;
-    
-        void Update()
+
+        public float SailPos { get => _sailPos; set => _sailPos = value; }
+
+        protected virtual void Update()
         {
             _realTurnSpeed = _turnSpeed;
             //went a bit overboard with keeping things private, but this was faster anyway.
             _windDirection = _windIndicator.transform.rotation.z;
 
     
-            //let you turn tha sail
-            _sailPos += Input.GetAxis("Vertical") * _sailTurnSpeed;
             _sailPos = Mathf.Clamp(_sailPos, -90f, 90f);
             _sail.transform.localRotation = Quaternion.Euler(0, 0, _sailPos); 
     
