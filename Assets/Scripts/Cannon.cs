@@ -15,6 +15,7 @@ namespace Game
         }
         void Update()
         {
+            // Firing the cannon
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if(!_cannonFired)
@@ -25,6 +26,7 @@ namespace Game
                 }
             }
         }
+        // Countdown after the cannon shoots
         IEnumerator CountDown()
         {
             yield return new WaitForSeconds(2);
