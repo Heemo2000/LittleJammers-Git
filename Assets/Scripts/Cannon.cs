@@ -15,18 +15,19 @@ namespace Game
         }
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && (_cannonFired = false))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                _cannonFired = true;
-                Instantiate(_cannonBall, _firePoint.transform.position, _firePoint.transform.rotation);
+                if(!_cannonFired)
+                {
+                    _cannonFired = true;
+                    Instantiate(_cannonBall, _firePoint.transform.position, _firePoint.transform.rotation);
+                    StartCoroutine("CountDown");
+                }
             }
         }
         IEnumerator CountDown()
         {
-            if (_cannonFired)
-            {
-                yield return new WaitForSeconds(4);
-            }
+            yield return new WaitForSeconds(2);
             _cannonFired = false;
         }
     }
