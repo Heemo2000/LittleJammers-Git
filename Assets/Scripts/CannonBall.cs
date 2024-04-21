@@ -1,3 +1,4 @@
+using Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,11 @@ public class CannonBall : MonoBehaviour
 {
     [SerializeField] float _cannonBallSpeed;
     [SerializeField] Rigidbody2D _rb;
+    [SerializeField] float _cannonBallDamage;
+    public float CannonBallDamage
+    {
+        get { return _cannonBallDamage; }
+    }
     void Start()
     {
         _rb.velocity = Vector3.right * _cannonBallSpeed;
@@ -16,5 +22,6 @@ public class CannonBall : MonoBehaviour
     {
         Destroy(gameObject);
         // Destroy Animation
+        collision.collider.GetComponent<CannonBallCollision>().OnCannonBallHit();
     }
 }

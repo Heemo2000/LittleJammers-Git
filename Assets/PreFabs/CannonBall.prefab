@@ -138,3 +138,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cannonBallSpeed: 10
   _rb: {fileID: 4637856573835116232}
+  _cannonBallDamage: 20

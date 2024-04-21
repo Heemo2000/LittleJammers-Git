@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575822975662104367, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
       propertyPath: m_Name
-      value: Canon (11)
+      value: Cannon (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575822975662104367, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
       propertyPath: m_Name
-      value: Canon (5)
+      value: Cannon (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575822975662104367, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
       propertyPath: m_Name
-      value: Canon (8)
+      value: Cannon (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
@@ -392,7 +392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1575822975662104367, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
       propertyPath: m_Name
-      value: Canon (1)
+      value: Cannon (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5535619dae6a73b44b5f6e24fd4d7490, type: 3}
