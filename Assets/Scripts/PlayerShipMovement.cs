@@ -18,6 +18,8 @@ namespace Game
         {
             //let you turn tha sail
             base.SailPos += Input.GetAxis("Vertical") * sailTurnSpeed;
+            float rudderInput = Input.GetAxis("Horizontal");
+            RudderTurn += rudderInput * rudderTurnSpeed;
             base.Update();
         }
     }

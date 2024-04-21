@@ -15,7 +15,7 @@ namespace Game
         private float _turnSpeed;
 
         [SerializeField]
-        private float _rudderTurnSpeed;
+        protected float rudderTurnSpeed;
 
         [SerializeField]
         private float _maxSpeed;
@@ -37,6 +37,7 @@ namespace Game
         private float _realTurnSpeed;
 
         public float SailPos { get => _sailPos; set => _sailPos = value; }
+        public float RudderTurn { get => _rudderTurn; set => _rudderTurn = value; }
 
         protected virtual void Update()
         {
@@ -83,11 +84,11 @@ namespace Game
 
     
             //calculations for moving the ship
-            float rudderInput = Input.GetAxis("Horizontal");
-            _rudderTurn += rudderInput * _rudderTurnSpeed;
-            _rudderTurn = Mathf.Clamp(_rudderTurn, -35, 35);
-            float turnAmount = _rudderTurn * _realTurnSpeed * Time.deltaTime;
-            _rudder.transform.localRotation = Quaternion.Euler(0, 0, _rudderTurn);
+            
+            
+            RudderTurn = Mathf.Clamp(RudderTurn, -35, 35);
+            float turnAmount = RudderTurn * _realTurnSpeed * Time.deltaTime;
+            _rudder.transform.localRotation = Quaternion.Euler(0, 0, RudderTurn);
             float speedWithWind = _maxSpeed * _windModifier;
     
             //actualy moves the ship
