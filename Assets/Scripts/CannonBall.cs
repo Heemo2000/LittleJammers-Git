@@ -11,6 +11,7 @@ public class CannonBall : MonoBehaviour
         _rb.velocity = Vector3.right * _cannonBallSpeed;
         Destroy(gameObject, 5);
     }
+    // What happens after collisions
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
