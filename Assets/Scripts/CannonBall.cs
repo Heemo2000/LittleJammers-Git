@@ -7,8 +7,8 @@ public class CannonBall : MonoBehaviour
 {
     [SerializeField] float _cannonBallSpeed;
     [SerializeField] Rigidbody2D _rb;
-    [SerializeField] float _cannonBallDamage;
-    public float CannonBallDamage
+    [SerializeField] int _cannonBallDamage;
+    public int CannonBallDamage
     {
         get { return _cannonBallDamage; }
     }
@@ -22,6 +22,6 @@ public class CannonBall : MonoBehaviour
     {
         Destroy(gameObject);
         // Destroy Animation
-        collision.collider.GetComponent<CannonBallCollision>().OnCannonBallHit();
+        collision.collider.GetComponent<CannonBallCollision>()?.OnCannonBallHit();
     }
 }

@@ -7,16 +7,25 @@ namespace Game
     public class PlayerShip : MonoBehaviour , CannonBallCollision
     {
         CannonBall cannonBall;
-        [SerializeField] float _shipHealth;
+        [SerializeField] GameObject _preFabCannonBall;
+        [SerializeField] int _shipHealth;
+        void Awake()
+        {
+            cannonBall = _preFabCannonBall.GetComponent<CannonBall>();
+        }
         void Update()
         {
             
         }
         public void OnCannonBallHit()
         {
-            Debug.Log(cannonBall.CannonBallDamage);
+            _shipHealth = _shipHealth - cannonBall.CannonBallDamage;
             Debug.Log(_shipHealth);
-            _shipHealth = _shipHealth;
+            if(_shipHealth <= 0)
+            {
+                Destroy(gameObject);
+                // Destroy Animation
+            }
         }
     }
 }
