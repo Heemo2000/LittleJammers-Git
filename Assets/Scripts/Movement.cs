@@ -18,6 +18,9 @@ namespace Game
         protected float rudderTurnSpeed;
 
         [SerializeField]
+        protected bool rudderBackOnRelease;
+
+        [SerializeField]
         private float _maxSpeed;
 
         [SerializeField]

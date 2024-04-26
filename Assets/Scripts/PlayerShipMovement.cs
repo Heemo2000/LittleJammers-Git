@@ -20,6 +20,13 @@ namespace Game
             base.SailPos += Input.GetAxis("Vertical") * sailTurnSpeed;
             float rudderInput = Input.GetAxis("Horizontal");
             RudderTurn += rudderInput * rudderTurnSpeed;
+            if (rudderBackOnRelease)
+            {
+               if (Input.GetAxis("Horizontal") == 0)
+               {
+                RudderTurn = 0;
+               } 
+            }
             base.Update();
         }
     }
