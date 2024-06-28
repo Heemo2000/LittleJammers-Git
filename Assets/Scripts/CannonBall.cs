@@ -14,7 +14,8 @@ public class CannonBall : MonoBehaviour
     }
     void Start()
     {
-        _rb.velocity = Vector3.right * _cannonBallSpeed;
+        Vector3 _direction = gameObject.transform.up;
+        _rb.velocity = _direction * _cannonBallSpeed;
         Destroy(gameObject, 5);
     }
     // What happens after collisions
